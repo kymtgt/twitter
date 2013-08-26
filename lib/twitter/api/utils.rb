@@ -48,6 +48,7 @@ module Twitter
       # @param options [Hash]
       # @return [Array]
       def objects_from_response(klass, request_method, path, options={})
+        Rails.logger.info "[TW] objects_from_response/#{request_method.to_s} '#{path}' with options: #{options}"
         response = send(request_method.to_sym, path, options)[:body]
         objects_from_array(klass, response)
       end
